@@ -1,0 +1,27 @@
+<node>
+  <interface name="dev.cudiph.pulseaudio">
+
+    <!-- pulseaudio subscribed events -->
+    <signal name="ServerEvent"></signal>
+    <signal name="SinkEvent"></signal>
+    <signal name="SourceEvent"></signal>
+
+    <!-- get default sink/source properties -->
+    <method name="GetAllDefaultInformation">
+      <arg direction="out" name="sink_name" type="s"></arg>
+      <arg direction="out" name="source_name" type="s"></arg>
+      <arg direction="out" name="sink_description" type="s"></arg>
+      <arg direction="out" name="source_description" type="s"></arg>
+      <arg direction="out" name="sink_volume" type="d"></arg>
+      <arg direction="out" name="source_volume" type="d"></arg>
+    </method>
+
+    <!-- in percentage 0.0 to 1.0 -->
+    <property access="read" name="DefaultSinkVolume" type="d"></property>
+    <property access="read" name="DefaultSourceVolume" type="d"></property>
+
+    <!-- human readable name -->
+    <property access="read" name="CurrentDefaultSink" type="s" />
+    <property access="read" name="CurrentDefaultSource" type="s" />
+  </interface>
+</node>
