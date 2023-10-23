@@ -3,7 +3,7 @@ CFLAGS = $(shell pkg-config --cflags --libs glib-2.0 gio-2.0 libpulse-mainloop-g
 generated := pdbus_gen
 objs := $(filter-out main.o, $(patsubst %.c,%.o,$(wildcard *.c)))
 
-.PHONY: clean codegen dev-setup
+.PHONY: clean codegen dev-setup install uninstall
 	
 pulsedbus: $(objs)
 	$(CC) main.c $(objs) $(CFLAGS) -o pulsedbus
@@ -17,3 +17,8 @@ configure: codegen
 clean:
 	rm -f pulsedbus $(objs)
 
+install:
+	mv pulsedbus ~/.local/bin/
+
+uninstall:
+	rm -f pulsedbus ~/.local/bin/pulsedbus
